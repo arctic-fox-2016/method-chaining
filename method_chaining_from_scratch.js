@@ -11,7 +11,28 @@
  }
    // Our object with the chainable methods
  var userController = {
-
+   currentUser: "",
+   findUser: function(string) {
+     for (var i = 0; i < usersData.length; i++) {
+       if (usersData[i]["firstName"] == string || usersData[i]["lastName"] == string || usersData[i]["email"] == string) {
+         this.currentUser = usersData[i];
+         break;
+       }
+     }
+     return this;
+   },
+   formatName: function() {
+     this.currentUser.fullName = this.currentUser.firstName + " " + this.currentUser.lastName;
+     return this;
+   },
+   formatData: function() {
+     this.currentUser.displayData = "result\n" + "Member name: " + this.currentUser.fullName + "\nID: " + this.currentUser.id + "\nEmail: " + this.currentUser.email;
+     return this;
+   },
+   displayUser: function() {
+     console.log(this.currentUser.displayData);
+     return this;
+   }
  };
 
 // Driver code
