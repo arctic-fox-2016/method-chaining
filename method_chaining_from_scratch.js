@@ -5,14 +5,39 @@
    {firstName:"Squidward", lastName:"Tentacles", email:"awesomesquidward@yahoo.com", id:104}
  ]
 
- function titleCaseName(str)
- {
 
- }
-   // Our object with the chainable methods
- var userController = {
-
- };
+ var userController = {​
+   currentUser:"",​
+   findUser:function(userEmail){
+     var arrayLength = usersData.length, i;
+     for(i = arrayLength - 1; i >= 0; i--){
+       if(usersData[i].email === userEmail){
+         this.currentUser = usersData[i];
+         break;
+       }
+     }
+     return this;
+  },​
+  formatName:function(){
+    if(this.currentUser){
+      this.currentUser.fullName = "asd";
+    }
+    return this;
+  },
+  createLayout:function(){
+    /*
+    if(this.currentUser){
+      this.currentUser.viewData = "<h2>Member: " + this.currentUser.fullName + "</h2>"​
+          + "<p>ID: " + this.currentUser.id + "</p>" + "<p>Email: " + this.currentUser.email + "</p>";
+    }
+    */
+    console.log("asd");
+    return this;
+  },​
+  displayUser:function(){
+    if(!this.currentUser) return;
+​  }
+};
 
 // Driver code
 userController.findUser("awesomesquidward@yahoo.com").formatName().formatData().displayUser();
